@@ -72,11 +72,14 @@ app.get('/', (req, res) => {
 app.post('/webhook', async (req, res) => {
   console.log('🔔 Webhook received!');
   console.log(JSON.stringify(req.body, null, 2));
-   const events = req.body.events;
-  for (const event of events) {
-    if (event.type === 'message' && event.message.type === 'text') {
-      const userMessage = event.message.text.trim();
-      const replyToken = event.replyToken;
+  const events = req.body.events;
+
+  if (events && events.length > 0) {
+    for (const event of events) {
+      if (event.type === 'message' && event.message.type === 'text') {
+        const userMessage = event.message.text.trim();
+        const replyToken = event.replyToken;
+      
 
       // 入力フォーマット判定（名前 生年月日 性別）
       const match = userMessage.match(/^([^\d\s]{2,})\s+(\d{4})[\/\-.](\d{1,2})[\/\-.](\d{1,2})\s+(男|女|男性|女性)$/);
