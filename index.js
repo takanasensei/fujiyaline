@@ -72,7 +72,7 @@ app.get('/', (req, res) => {
 app.post('/webhook', async (req, res) => {
   console.log('🔔 Webhook received!');
   console.log(JSON.stringify(req.body, null, 2));
-  
+   const events = req.body.events;
   for (const event of events) {
     if (event.type === 'message' && event.message.type === 'text') {
       const userMessage = event.message.text.trim();
