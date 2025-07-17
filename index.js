@@ -72,6 +72,7 @@ app.get('/', (req, res) => {
 app.post('/webhook', async (req, res) => {
   console.log('🔔 Webhook received!');
   console.log(JSON.stringify(req.body, null, 2));
+
   const events = req.body.events;
 
   if (events && events.length > 0) {
@@ -79,7 +80,6 @@ app.post('/webhook', async (req, res) => {
       if (event.type === 'message' && event.message.type === 'text') {
         const userMessage = event.message.text.trim();
         const replyToken = event.replyToken;
-      
 
       // 入力フォーマット判定（名前 生年月日 性別）
       const match = userMessage.match(/^([^\d\s]{2,})\s+(\d{4})[\/\-.](\d{1,2})[\/\-.](\d{1,2})\s+(男|女|男性|女性)$/);
@@ -244,21 +244,22 @@ ${loveTypeDefinition}
               }
             ]
           },
-          {
-            headers: {
-              Authorization: `Bearer ${CHANNEL_ACCESS_TOKEN}`,
-              'Content-Type': 'application/json'
+           {
+              headers: {
+                Authorization: `Bearer ${CHANNEL_ACCESS_TOKEN}`,
+                'Content-Type': 'application/json',
+              },
             }
-          }
-        );
+          );
+        }
       }
     }
   }
 
   res.sendStatus(200);
+});
 
 // サーバー起動
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
