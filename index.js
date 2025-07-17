@@ -68,9 +68,11 @@ app.get('/', (req, res) => {
 });
 
 // Webhook
-app.post('/webhook', async (req, res) => {
-  const events = req.body.events;
 
+app.post('/webhook', async (req, res) => {
+  console.log('🔔 Webhook received!');
+  console.log(JSON.stringify(req.body, null, 2));
+  
   for (const event of events) {
     if (event.type === 'message' && event.message.type === 'text') {
       const userMessage = event.message.text.trim();
@@ -246,6 +248,7 @@ ${loveTypeDefinition}
 });
 
 // サーバー起動
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
