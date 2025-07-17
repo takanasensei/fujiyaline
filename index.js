@@ -248,7 +248,6 @@ ${loveTypeDefinition}
   }
 
   res.sendStatus(200);
-});
 
 // サーバー起動
 
