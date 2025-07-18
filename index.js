@@ -146,7 +146,7 @@ ${loveTypeDefinition}
             'https://api.openai.com/v1/chat/completions',
             {
               model: 'gpt-3.5-turbo',
-              temperature: 0.0,
+              temperature: 0.7,
               messages: [
                 { role: 'system', content: `
 あなたは高菜先生という猫キャラの世界観で恋愛診断を行う占い師です。
