@@ -217,7 +217,7 @@ ${loveTypeDefinition}
           resultText = 'すみません、現在占いを実行できませんでした。もう一度お試しください。';
         }
 
-        const finalMessage = `${resultText}\n\n🐾あなたのタイプについてもっと詳しく見たい方はこちら👇\n▶️ https://xxxxxx.lp-web.net/type/`;
+        const finalMessage = `${resultText}\n\n🐾あなたのタイプについてもっと詳しく見たい方はこちら👇\n▶️ https://wedding-kanko.lp-web.net/type/`;
 
         await axios.post(
           'https://api.line.me/v2/bot/message/reply',
